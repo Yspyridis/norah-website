@@ -47,9 +47,7 @@ export default function HomePage() {
 
       <section className="band-tint !py-28">
         <Container>
-          <span className="eyebrow" style={{ fontWeight: 700 }}>
-            The adoption pathway
-          </span>
+          <span className="eyebrow">The adoption pathway</span>
           <h2 className="mt-2.5 max-w-2xl text-[1.875rem]">Five stages from first assessment to national scale.</h2>
           <div className="mt-10">
             <Pathway />
@@ -81,12 +79,8 @@ export default function HomePage() {
 
       <section className="band-tint">
         <Container>
-          <span className="eyebrow" style={{ fontWeight: 700 }}>
-            Consortium &amp; partners
-          </span>
-          <h2 className="mt-2.5 max-w-xl text-[1.875rem]" style={{ fontWeight: 700 }}>
-            A national network across academia, industry and local government.
-          </h2>
+          <span className="eyebrow">Consortium &amp; partners</span>
+          <h2 className="mt-2.5 max-w-xl text-[1.875rem]">A national network across academia, industry and local government.</h2>
         </Container>
         <div className="mt-8">
           <PartnerMarquee />

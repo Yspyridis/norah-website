@@ -3,7 +3,6 @@ import { PageHeader } from "@/components/page-header";
 import { Container } from "@/components/container";
 import { SectionHeading } from "@/components/section-heading";
 import { StatGrid } from "@/components/stat-grid";
-import { DarkPanel } from "@/components/dark-panel";
 import { Button } from "@/components/button";
 import { outcomeStats, site } from "@/lib/content";
 
@@ -47,20 +46,18 @@ export default function OutcomesPage() {
         </Container>
       </section>
 
-      <section className="band-tint !py-0">
-        <div className="full-bleed">
-          <DarkPanel className="flex flex-wrap items-center justify-between gap-6">
+      <section className="band-paper">
+        <Container>
+          <div className="flex flex-wrap items-center justify-between gap-6">
             <div>
-              <h2 className="text-[1.5rem]" style={{ color: "var(--norah-teal)" }}>
-                See how your deployment could perform
-              </h2>
-              <p className="mt-2 max-w-[42ch] text-[0.95rem]" style={{ color: "color-mix(in oklab, white 80%, transparent)" }}>
+              <h2 className="text-[1.6rem]">See how your deployment could perform</h2>
+              <p className="mt-2 max-w-[46ch] text-[0.98rem] text-[var(--norah-text-subtle)]">
                 Start an assessment to get a facility-specific investment case.
               </p>
             </div>
             <Button href="/contact">Get in touch</Button>
-          </DarkPanel>
-        </div>
+          </div>
+        </Container>
       </section>
     </>
   );

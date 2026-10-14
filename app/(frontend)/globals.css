@@ -84,10 +84,12 @@ body {
   --norah-border-strong: rgba(255, 255, 255, 0.24);
   --norah-primary: var(--norah-teal);
 }
-/* .glass-card keeps its own light, translucent surface inside a blue
-   .band-tint section — so text inside one must stay dark-on-light, not
-   inherit the white-on-blue re-point above. */
+/* Cards keep a solid white surface inside a blue .band-tint section
+   (matching the pathway cards below) rather than the translucent glass
+   look — so text inside one must stay dark-on-light, not inherit the
+   white-on-blue re-point above. */
 .band-tint .glass-card {
+  background: var(--norah-white);
   color: var(--norah-ink);
   --norah-foreground: var(--norah-ink);
   --norah-text-subtle: color-mix(in oklab, var(--norah-ink) 65%, transparent);
@@ -95,6 +97,11 @@ body {
   --norah-border: color-mix(in oklab, var(--norah-ink) 8%, transparent);
   --norah-border-strong: color-mix(in oklab, var(--norah-ink) 15%, transparent);
   --norah-primary: var(--norah-brand);
+}
+/* Section titles on a blue background: light green and bold. */
+.band-tint h2 {
+  color: var(--norah-teal);
+  font-weight: 700;
 }
 /* Pathway cards keep a solid white surface inside the blue .band-tint
    section, so their text must stay blue-on-white, not inherit the
@@ -176,7 +183,7 @@ section {
 .eyebrow {
   color: var(--norah-primary);
   font-size: var(--norah-space-3);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }

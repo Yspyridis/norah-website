@@ -3,7 +3,6 @@ import { PageHeader } from "@/components/page-header";
 import { Container } from "@/components/container";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceCards } from "@/components/service-cards";
-import { DarkPanel } from "@/components/dark-panel";
 import { Button } from "@/components/button";
 import { services, scopeDeliverables, site } from "@/lib/content";
 
@@ -48,20 +47,18 @@ export default function AimsObjectivesPage() {
         </Container>
       </section>
 
-      <section className="band-tint !py-0">
-        <div className="full-bleed">
-          <DarkPanel className="flex flex-wrap items-center justify-between gap-6">
+      <section className="band-paper">
+        <Container>
+          <div className="flex flex-wrap items-center justify-between gap-6">
             <div>
-              <h2 className="text-[1.5rem]" style={{ color: "var(--norah-teal)" }}>
-                Ready to start your assessment?
-              </h2>
-              <p className="mt-2 max-w-[42ch] text-[0.95rem]" style={{ color: "color-mix(in oklab, white 80%, transparent)" }}>
+              <h2 className="text-[1.6rem]">Ready to start your assessment?</h2>
+              <p className="mt-2 max-w-[46ch] text-[0.98rem] text-[var(--norah-text-subtle)]">
                 Tell the hub team about your facility or your system, and we&apos;ll place you on the pathway.
               </p>
             </div>
             <Button href="/contact">Get in touch</Button>
-          </DarkPanel>
-        </div>
+          </div>
+        </Container>
       </section>
     </>
   );

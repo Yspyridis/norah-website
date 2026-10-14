@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navLinks } from "@/lib/content";
+
+const allLinks = [{ href: "/", label: "Home" }, ...navLinks];
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <div className="lg:hidden">
@@ -35,29 +39,26 @@ export function MobileNav() {
         <div
           className="absolute inset-x-0 top-full px-5 py-4"
           style={{
-            background: "color-mix(in oklab, var(--norah-ink) 97%, transparent)",
+            background: "color-mix(in oklab, var(--norah-brand) 97%, transparent)",
             backdropFilter: "blur(18px)",
             WebkitBackdropFilter: "blur(18px)",
           }}
         >
           <nav className="flex flex-col gap-1" aria-label="Primary">
-            <Link
-              href="/"
-              onClick={() => setOpen(false)}
-              className="rounded-lg px-2 py-3 text-[16px] font-medium text-white/80 hover:bg-white/10 hover:text-white"
-            >
-              Home
-            </Link>
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-2 py-3 text-[16px] font-medium text-white/80 hover:bg-white/10 hover:text-white"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {allLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="rounded-lg px-2 py-3 text-[16px] font-medium hover:bg-white/10 hover:text-white"
+                  style={{ color: isActive ? "var(--norah-white)" : "rgba(255,255,255,0.8)" }}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <Link
               href="/contact"
               onClick={() => setOpen(false)}

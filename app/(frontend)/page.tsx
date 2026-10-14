@@ -38,7 +38,7 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-5 lg:mt-16">
               <HeroGlance />
             </div>
           </div>

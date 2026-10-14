@@ -24,10 +24,6 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run build
-        env:
-          # Remove this line once the repo is served from a custom domain
-          # at the root (see CNAME) instead of <user>.github.io/<repo>/.
-          GITHUB_PAGES_BASE_PATH: /norah-website
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

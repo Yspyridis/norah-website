@@ -1,0 +1,439 @@
+@import "tailwindcss";
+
+html {
+  overflow-x: hidden;
+}
+
+:root {
+  /* Brand palette */
+  --norah-brand: #083a47;
+  --norah-brand-deep: #052830;
+  --norah-teal: #dbedd5;
+  --norah-ink: #0a1e25;
+  --norah-paper: #f3f6f7;
+  --norah-white: #ffffff;
+
+  /* Semantic roles */
+  --norah-background: var(--norah-paper);
+  --norah-foreground: var(--norah-ink);
+  --norah-primary: var(--norah-brand);
+  --norah-primary-hover: var(--norah-brand-deep);
+  --norah-highlight: var(--norah-teal);
+  --norah-surface: color-mix(in oklab, var(--norah-white) 55%, transparent);
+  --norah-surface-strong: color-mix(in oklab, var(--norah-white) 70%, transparent);
+  --norah-border: color-mix(in oklab, var(--norah-ink) 8%, transparent);
+  --norah-border-strong: color-mix(in oklab, var(--norah-ink) 15%, transparent);
+  --norah-text-subtle: color-mix(in oklab, var(--norah-ink) 65%, transparent);
+  --norah-text-faint: color-mix(in oklab, var(--norah-ink) 45%, transparent);
+  --norah-band-tint: color-mix(in oklab, var(--norah-ink) 6%, var(--norah-paper));
+  --norah-band-deep-tint: color-mix(in oklab, var(--norah-brand) 8%, var(--norah-band-tint));
+
+  /* Spacing: 4px base */
+  --norah-space-1: 0.25rem;
+  --norah-space-2: 0.5rem;
+  --norah-space-3: 0.75rem;
+  --norah-space-4: 1rem;
+  --norah-space-5: 1.25rem;
+  --norah-space-6: 1.5rem;
+  --norah-space-8: 2rem;
+  --norah-space-10: 2.5rem;
+  --norah-space-12: 3rem;
+  --norah-space-16: 4rem;
+  --norah-space-20: 5rem;
+
+  /* Shape and effects */
+  --norah-radius-sm: 0.375rem;
+  --norah-radius-md: 0.5rem;
+  --norah-radius-lg: 0.625rem;
+  --norah-radius-xl: 0.875rem;
+  --norah-radius-2xl: 1.125rem;
+  --norah-radius-pill: 9999px;
+  --norah-blur-surface: 12px;
+  --norah-transition-fast: 150ms ease;
+  --norah-content-max: 80rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-archivo);
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--norah-foreground);
+  background: var(--norah-background);
+}
+
+.band-paper {
+  background: var(--norah-paper);
+}
+.band-tint {
+  background: var(--norah-brand);
+  /* Re-point the semantic text/border tokens for everything painted directly
+     on this section, so existing var(--norah-*) references (inline styles
+     included) stay legible without touching every page. Setting `color`
+     itself (not just the custom property) also fixes plain headings/text
+     that inherit color rather than referencing var(--norah-foreground)
+     directly — e.g. bare <h2>/<h3> tags. */
+  color: var(--norah-white);
+  --norah-foreground: var(--norah-white);
+  --norah-text-subtle: color-mix(in oklab, var(--norah-white) 75%, transparent);
+  --norah-text-faint: color-mix(in oklab, var(--norah-white) 55%, transparent);
+  --norah-border: rgba(255, 255, 255, 0.14);
+  --norah-border-strong: rgba(255, 255, 255, 0.24);
+  --norah-primary: var(--norah-teal);
+}
+/* .glass-card keeps its own light, translucent surface inside a blue
+   .band-tint section — so text inside one must stay dark-on-light, not
+   inherit the white-on-blue re-point above. */
+.band-tint .glass-card {
+  color: var(--norah-ink);
+  --norah-foreground: var(--norah-ink);
+  --norah-text-subtle: color-mix(in oklab, var(--norah-ink) 65%, transparent);
+  --norah-text-faint: color-mix(in oklab, var(--norah-ink) 45%, transparent);
+  --norah-border: color-mix(in oklab, var(--norah-ink) 8%, transparent);
+  --norah-border-strong: color-mix(in oklab, var(--norah-ink) 15%, transparent);
+  --norah-primary: var(--norah-brand);
+}
+/* Pathway cards keep a solid white surface inside the blue .band-tint
+   section, so their text must stay blue-on-white, not inherit the
+   white-on-blue re-point above. */
+.pathway-card {
+  color: var(--norah-brand);
+  --norah-text-subtle: color-mix(in oklab, var(--norah-brand) 70%, transparent);
+  --norah-border-strong: color-mix(in oklab, var(--norah-brand) 15%, transparent);
+}
+.band-hero {
+  background:
+    radial-gradient(1100px 620px at 12% -8%, color-mix(in oklab, var(--norah-teal) 16%, transparent), transparent 60%),
+    radial-gradient(900px 520px at 100% 4%, color-mix(in oklab, var(--norah-brand) 12%, transparent), transparent 55%),
+    var(--norah-paper);
+}
+.band-deep-tint {
+  background:
+    radial-gradient(900px 480px at 90% -20%, color-mix(in oklab, var(--norah-teal) 14%, transparent), transparent 60%),
+    var(--norah-band-tint);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--norah-teal) 30%, transparent);
+  color: var(--norah-brand-deep);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--norah-brand);
+  outline-offset: 2px;
+}
+
+.wrap {
+  max-width: var(--norah-content-max);
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Breaks an element out of its centered, max-width parent to span the full
+   viewport width, regardless of how deeply it's nested. */
+.full-bleed {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+section {
+  padding: var(--norah-space-20) 0;
+}
+
+@media (max-width: 720px) {
+  section {
+    padding: var(--norah-space-12) 0;
+  }
+}
+
+.glass-card {
+  background: var(--norah-surface);
+  backdrop-filter: blur(var(--norah-blur-surface));
+  -webkit-backdrop-filter: blur(var(--norah-blur-surface));
+  border-radius: var(--norah-radius-xl);
+  box-shadow: inset 0 0 0 1px var(--norah-border);
+}
+
+.eyebrow {
+  color: var(--norah-primary);
+  font-size: var(--norah-space-3);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: var(--norah-radius-pill);
+  padding: 0.7rem 1.4rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.25;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--norah-transition-fast), box-shadow var(--norah-transition-fast);
+}
+.btn-primary {
+  background: var(--norah-primary);
+  color: var(--norah-white);
+}
+.btn-primary:hover {
+  background: var(--norah-primary-hover);
+}
+.btn-secondary {
+  background: var(--norah-surface-strong);
+  color: var(--norah-foreground);
+  box-shadow: inset 0 0 0 1px var(--norah-border-strong);
+}
+.btn-secondary:hover {
+  background: var(--norah-white);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .enter-fade {
+    animation: enter-fade 600ms ease both;
+  }
+}
+@keyframes enter-fade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Homepage hero backdrop — mirrors /futuristic_2's hero exactly: the facility
+   photo held under a brand-colour tint (mix-blend-mode: color), radially
+   masked from the top-right, plus two counter-rotating rings. */
+.hero-photo-wash {
+  position: absolute;
+  inset: 0;
+  background-image: var(--hero-photo-url);
+  background-size: cover;
+  background-position: 68% 28%;
+  opacity: 0.3;
+  filter: grayscale(1) brightness(1.25) contrast(0.92);
+  -webkit-mask-image: radial-gradient(1200px 800px at 82% 8%, black 0%, black 35%, transparent 72%);
+  mask-image: radial-gradient(1200px 800px at 82% 8%, black 0%, black 35%, transparent 72%);
+}
+
+.hero-photo-tint {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: color;
+  background: var(--norah-brand);
+  opacity: 0.5;
+  -webkit-mask-image: radial-gradient(1200px 800px at 82% 8%, black 0%, black 35%, transparent 72%);
+  mask-image: radial-gradient(1200px 800px at 82% 8%, black 0%, black 35%, transparent 72%);
+}
+
+.hero-rings {
+  position: absolute;
+  top: -28vw;
+  right: -18vw;
+  width: 62vw;
+  height: 62vw;
+  max-width: 900px;
+  max-height: 900px;
+}
+.hero-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in oklab, var(--norah-brand) 18%, transparent);
+}
+.hero-ring::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    color-mix(in oklab, var(--norah-teal) 60%, transparent) 8%,
+    transparent 20%
+  );
+}
+.hero-ring-outer {
+  animation: hero-ring-spin 60s linear infinite;
+}
+.hero-ring-inner {
+  inset: 9%;
+  animation: hero-ring-spin-reverse 42s linear infinite;
+}
+.hero-ring-inner::before {
+  background: conic-gradient(
+    from 40deg,
+    transparent 0%,
+    color-mix(in oklab, var(--norah-brand) 45%, transparent) 6%,
+    transparent 16%
+  );
+}
+@keyframes hero-ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes hero-ring-spin-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-ring-outer,
+  .hero-ring-inner {
+    animation: none;
+  }
+}
+
+.hero-badge-dark {
+  background: var(--norah-brand);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  color: var(--norah-white);
+}
+
+.hero-title {
+  font-size: clamp(2.9rem, 6.4vw, 5.1rem);
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+}
+
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.1rem 0.75rem 1.4rem;
+  border-radius: 9999px;
+  background: var(--norah-brand);
+  color: var(--norah-white);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color var(--norah-transition-fast);
+}
+.hero-btn-primary:hover {
+  background: var(--norah-brand-deep);
+}
+.hero-btn-chip {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.4rem;
+  border-radius: 9999px;
+  background: var(--norah-teal);
+  color: var(--norah-brand-deep);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color var(--norah-transition-fast);
+}
+.hero-btn-secondary:hover {
+  background: var(--norah-white);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+  max-width: 19rem;
+  margin-left: auto;
+}
+
+.hero-stat-cell {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.85rem;
+  border-radius: 14px;
+  background: color-mix(in oklab, var(--norah-white) 90%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    inset 0 0 0 1px var(--norah-border),
+    0 20px 40px -26px color-mix(in oklab, var(--norah-brand) 40%, transparent);
+}
+
+.hero-stat-value {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(1.1rem, 1.9vw, 1.45rem);
+  letter-spacing: -0.02em;
+  color: var(--norah-ink);
+}
+
+.hero-stat-label {
+  margin-top: 0.3rem;
+  font-size: 0.68rem;
+  line-height: 1.3;
+  color: var(--norah-text-subtle);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-wrap {
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 4%, black 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 4%, black 96%, transparent);
+}
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+.marquee-wrap:hover .marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .marquee-wrap {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .marquee-dup {
+    display: none;
+  }
+}

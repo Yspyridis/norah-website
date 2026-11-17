@@ -209,6 +209,7 @@ export const navLinks = [
   { href: "/about", label: "About" },
   { href: "/aims-objectives", label: "Aims & Objectives" },
   { href: "/partners", label: "Partners" },
+  { href: "/network", label: "Network" },
   { href: "/outcomes", label: "Outcomes" },
   { href: "/news", label: "News" },
 ];

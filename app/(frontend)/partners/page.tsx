@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 import { Container } from "@/components/container";
 import { SectionHeading } from "@/components/section-heading";
@@ -41,6 +42,9 @@ export default async function PartnersPage() {
               <p className="mt-2 max-w-[46ch] text-[0.98rem] text-[var(--norah-text-subtle)]">
                 Talk to the hub about becoming a delivery, technology or local authority partner.
               </p>
+              <Link href="/network" className="mt-3 inline-block font-medium" style={{ color: "var(--norah-primary)" }}>
+                See our wider network →
+              </Link>
             </div>
             <Button href="/contact">Get in touch</Button>
           </div>

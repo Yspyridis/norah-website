@@ -41,6 +41,13 @@ const networkMembers: NetworkRecord[] = [
     consentToList: true,
   },
   {
+    name: "The Circular Net",
+    category: "industry",
+    website: "https://thecircularnet.com",
+    logo: "/logos/network/circularnet.png",
+    consentToList: true,
+  },
+  {
     name: "Zoritex",
     category: "technology",
     website: "https://www.zoritex.com",

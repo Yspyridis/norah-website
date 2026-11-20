@@ -34,6 +34,13 @@ const networkMembers: NetworkRecord[] = [
     consentToList: true,
   },
   {
+    name: "Recycleye",
+    category: "technology",
+    website: "https://recycleye.com",
+    logo: "/logos/network/recycleye.png",
+    consentToList: true,
+  },
+  {
     name: "Sorted Technologies",
     category: "technology",
     website: "https://www.sortedtech.io",

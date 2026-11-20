@@ -14,7 +14,7 @@ export const site = {
   projectDuration: "43 months",
   timeline: "43 months, to March 2030",
   targetDate: "March 2030",
-  contactEmail: "hub@norahprogramme.uk",
+  contactEmail: "info@norahhub.co.uk",
 };
 
 export const hero = {

@@ -34,6 +34,13 @@ const networkMembers: NetworkRecord[] = [
     consentToList: true,
   },
   {
+    name: "Sorted Technologies",
+    category: "technology",
+    website: "https://www.sortedtech.io",
+    logo: "/logos/network/sorted.png",
+    consentToList: true,
+  },
+  {
     name: "Zoritex",
     category: "technology",
     website: "https://www.zoritex.com",
